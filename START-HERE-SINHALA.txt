@@ -1,0 +1,32 @@
+SADEE XDIMA — FULL STORE PACKAGE
+
+UPLOAD
+1. Extract this ZIP.
+2. Upload the CONTENTS of this folder to the root of your GitHub repository (index.html must be at the root).
+3. Connect the repository to Netlify. Publish directory: . ; Functions directory: netlify/functions ; Build command: blank.
+4. Use a build deploy (Git-connected deploy), not only a static drag-and-drop deploy, so Netlify Functions are deployed.
+
+ADMIN
+Open /admin/ . Admin order actions need STORE_ADMIN_SECRET configured in Netlify environment variables. Do not remove authentication or put secrets in config.js.
+
+SUPABASE
+config.js contains the project URL and public publishable key only. Set SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY and STORE_ADMIN_SECRET in Netlify environment variables. Never expose the service-role key.
+
+SQL
+SQL files are in supabase/. Back up the database first. Review and apply migrations in the documented dependency order; do not blindly run all files together on an existing production database. If duplicate payment references or license keys already exist, resolve them safely before applying unique constraints.
+
+PAYMENTS
+eZ Cash references and receipt images are submitted for manual review. A reference or screenshot alone does not prove payment. Keep orders pending until the actual transaction is verified.
+
+LOADING
+The branded loading overlay is included in index.html and assets/sadee-xdima-loading.png. The service worker cache was bumped to v9. Test in a private tab after deployment.
+
+TEST STATUS
+This ZIP is a prepared source package. It has not been deployed to your Netlify or Supabase project. Live payment, email, database and admin actions must be tested after environment variables and SQL setup are configured.
+
+
+UPDATE — COMPACT LOADER + FREE ORDER NOTIFICATION
+- Full-screen animated loading artwork removed. A small, short loading indicator is used instead.
+- Order success screen includes a WhatsApp button so the customer can notify the store without paid email-domain setup.
+- Read FREE-NOTIFICATIONS-SINHALA.txt before testing.
+- Keep Netlify Functions directory at netlify/functions and publish directory at the project root.
